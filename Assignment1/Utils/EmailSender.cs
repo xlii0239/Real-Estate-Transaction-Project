@@ -15,12 +15,12 @@ namespace Assignment1.Utils
     public class EmailSender
     {
         // Please use your API KEY here.
-        private const String API_KEY = "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";
+        private const String API_KEY = "";
 
         public void Send(String toEmail, String subject, String contents, string fileName, string dataAsString)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("charleneloove@gmail.com", "Bing Wang");
+            var from = new EmailAddress("email@address", "Sender Name");
             var to = new EmailAddress(toEmail, "");
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";
