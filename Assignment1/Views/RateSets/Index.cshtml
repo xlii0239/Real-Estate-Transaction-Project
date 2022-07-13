@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Assignment1.Models.RateSet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/chart/exporting.js"></script>
+<script src="~/Scripts/chart/highcharts.js"></script>
+<link href="~/Content/highchart.css" rel="stylesheet" />
+
+<h2>All feedbacks</h2>
+
+<p>
+    @Html.ActionLink("Mark us now!", "Create")
+</p>
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+        Thank you for your feedback, this is an important reference for us to improve our service
+    </p>
+</figure>
+
+<script>
+    $(document).ready(function () {
+        $.getJSON("/RateSets/GetData", function (data){
+
+            Highcharts.chart('container', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Overall Marks From Customer For Our Website'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: [{
+                        name: '0 Mark',
+                        y: data.agentMark0
+                    }, {
+                        name: '1 Mark',
+                        y: data.agentMark1
+                    }, {
+                        name: '2 Mark',
+                        y: data.agentMark2
+                    }, {
+                        name: '3 Mark',
+                        y: data.agentMark3
+                    }, {
+                        name: '4 Mark',
+                        y: data.agentMark4
+                    }, {
+                        name: '5 Mark',
+                        y: data.agentMark5
+                    }, {
+                        name: '6 Mark',
+                        y: data.agentMark6
+                    }, {
+                        name: '7 Mark',
+                        y: data.agentMark7
+                    }, {
+                        name: '8 Mark',
+                        y: data.agentMark8
+                    }, {
+                        name: '9 Mark',
+                        y: data.agentMark9
+                    }, {
+                        name: '10 Mark',
+                        y: data.agentMark10
+                    }]
+                }]
+            });
+        });
+    });
+
+</script>

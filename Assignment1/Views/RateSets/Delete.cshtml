@@ -1,0 +1,57 @@
+﻿@model Assignment1.Models.RateSet
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RateSet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AgentMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgentMark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HouseMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HouseMark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebSiteMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebSiteMark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OverallMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OverallMark)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

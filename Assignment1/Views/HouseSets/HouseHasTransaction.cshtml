@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "HouseHasTransaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<h2>Can not delete the house, because the house has an ongoing transaction, please complete the transaction first</h2>
+
+<li>@Html.ActionLink("Return to House Page", "Index", "HouseSets")</li>
